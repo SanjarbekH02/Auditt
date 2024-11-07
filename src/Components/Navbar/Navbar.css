@@ -1,0 +1,45 @@
+.container{
+    max-width: 1200px;
+    padding: 0 40px;
+    margin: auto;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.nav-list{
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-list-item{
+    padding: 10px;
+}
+
+.nav-link{
+    text-decoration: none;
+    font-family: DM Sans;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23.44px;
+    color: #70668C;
+}
+
+.nav-link:hover{
+    color: red;
+}
+
+.button{
+    font-family: Inter;
+    font-weight: 500;
+    padding: 10px 30px;
+    color: white;
+    background: linear-gradient(#FF7373, #CD2525);
+    border: none;
+    border-radius: 8px;
+}
