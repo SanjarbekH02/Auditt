@@ -1,6 +1,6 @@
 .container{
     max-width: 1200px;
-    padding: 0 40px;
+    padding: 0 15px;
     margin: auto;
 }
 
@@ -39,7 +39,12 @@
     font-weight: 500;
     padding: 10px 30px;
     color: white;
-    background: linear-gradient(#FF7373, #CD2525);
+    background: linear-gradient(to right, #FF7373, #CD2525);
     border: none;
     border-radius: 8px;
+    cursor: pointer;
+}
+
+.button:hover{
+    background: linear-gradient(#FFA0A0 , #F52C2C);
 }
