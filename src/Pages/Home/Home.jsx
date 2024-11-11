@@ -3,7 +3,7 @@ import './Home.css'
 import HeadImg from '../../images/bank.png'
 import Students from '../../images/students.png'
 import Teachers from '../../images/teachers.png'
-import ListCourses from '../../Components/ListCourses/ListCourses';
+import ListCourses from '../ListCourses/ListCourses';
 import Sell from '../../images/sell.png'
 
 const Home = () => {

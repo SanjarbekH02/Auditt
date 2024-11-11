@@ -1,0 +1,163 @@
+.courses{
+    padding: 40px 0;
+    margin-bottom: 40px;
+}
+
+.courses-title{
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 24px;
+    color: #64748B;
+    text-align: center;
+}
+
+.courses-block{
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.courses-card{
+    width: 270px;
+    background-color: white;
+    border-radius: 16px;
+    padding: 15px 10px;
+    margin-bottom: 30px;
+}
+
+.course-img{
+    width: 100%;
+}
+
+.pricee{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.price{
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+    background: linear-gradient(to right, #FF7373, #CD2525);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-left: auto;
+}
+
+.course-name{
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 24px;
+    color: #64748B;
+    padding: 10px 0;
+}
+
+.course-author{
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 16px;
+    color: #64748B;
+    padding-bottom: 20px;
+}
+
+.card-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.course-number{
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 16px;
+    color: #64748B;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.page-label {
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: 400;
+    color: #3A3A49;
+    padding-right: 10px;
+}
+
+.page-arrow-left,  .page-arrow-right{
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #333;
+    position: relative;
+}
+
+.page-arrow-left::after{
+    content: "";
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid #CD2525;
+    border-left: 10px solid transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(135deg);
+    cursor: pointer;
+    z-index: -1;
+}
+
+.page-arrow-right::after{
+    content: "";
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid #CD2525;
+    border-left: 10px solid transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-45deg);
+    cursor: pointer;
+    z-index: -1;
+}
+
+.page-arrow-left:disabled {
+    color: #ccc;
+    cursor: default;
+}
+
+.page-arrow-right:disabled {
+    color: #ccc;
+    cursor: default;
+}
+
+.page-number {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #FF7373, #CD2525);
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.page-select {
+    font-size: 18px;
+    padding: 3px;
+    border: none;
+    border-bottom: 1px solid #70668C;
+    outline: none;
+    background-color: inherit;
+    padding-left: 10px;
+}
