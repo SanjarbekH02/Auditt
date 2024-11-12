@@ -188,6 +188,34 @@ const ListCourses = () => {
                         </div>
                     </div>
                 ))}
+                
+            </div>
+            <div className="pagination">
+                <span className="page-label">Page</span>
+                <button
+                    className="page-arrow-left"
+                    onClick={() => handlePageChange(currentPage > 1 ? currentPage - 1 : 1)}
+                    disabled={currentPage === 1}
+                ></button>
+                <div className="page-number">
+                    {currentPage}
+                </div>
+                <button
+                    className="page-arrow-right"
+                    onClick={() => handlePageChange(currentPage < totalPages ? currentPage + 1 : totalPages)}
+                    disabled={currentPage === totalPages}
+                ></button>
+                <select
+                    className="page-select"
+                    onChange={(e) => handlePageChange(Number(e.target.value))}
+                >
+                    <option selected disabled>{totalPages}</option>
+                    {Array.from({ length: totalPages }, (_, i) => (
+                        <option key={i} value={i + 1}>
+                            {i + 1}
+                        </option>
+                    ))}
+                </select>
             </div>
 
         </div>
