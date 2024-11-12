@@ -220,7 +220,7 @@
     border: 1px solid #ddd;
     border-radius: 16px;
     overflow: hidden;
-    font-family: Arial, sans-serif;
+    font-family: Inter;
   }
 
   .chat-title{
@@ -280,7 +280,7 @@
   
   .chat-body {
     padding: 10px;
-    height: 390px;
+    height: 370px;
     overflow-y: auto;
     background-color: #ffffff;
   }
@@ -381,6 +381,10 @@
     background-color: #3664DA;
     margin-right: 10px;
     border-radius: 6px;
+  }
+
+  .chat-input button:hover{
+    box-shadow: 0 0 2px #3664DA;
   }
   
   .date{

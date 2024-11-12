@@ -1,22 +1,163 @@
 import React, { useState } from 'react';
-import './ListCourses.css';
 import Audit from '../../images/img.png';
+import Courses from '../Courses/Courses'
+import './ListCourses.css'
+import { useNavigate } from 'react-router-dom';
 
-const coursesData = new Array(50).fill({
-    img: Audit,
-    price: "299 000 UZS",
-    name: "Audit",
-    author: "Azizov Aziz",
-    lessons: "40 ta dars"
-});
 
 const ListCourses = () => {
+
+    const coursesData = [
+        {
+            img: Audit,
+            price: "299 000 UZS",
+            name: "Audit",
+            author: "Azizov Aziz",
+            lessons: "40 ta dars",
+            buy: true,
+            id:1,
+        },
+    
+        {
+            img: Audit,
+            price: "299 000 UZS",
+            name: "Audit",
+            author: "Azizov Aziz",
+            lessons: "40 ta dars",
+            buy: false,
+            id:2,
+        },
+        {
+            img: Audit,
+            price: "299 000 UZS",
+            name: "Audit",
+            author: "Azizov Aziz",
+            lessons: "40 ta dars",
+            buy: true,
+            id:3,
+        },
+        {
+            img: Audit,
+            price: "299 000 UZS",
+            name: "Audit",
+            author: "Azizov Aziz",
+            lessons: "40 ta dars",
+            buy: true,
+            id:4,
+        },
+        {
+            img: Audit,
+            price: "299 000 UZS",
+            name: "Audit",
+            author: "Azizov Aziz",
+            lessons: "40 ta dars",
+            buy: false,
+            id:5,
+        },
+        {
+            img: Audit,
+            price: "299 000 UZS",
+            name: "Audit",
+            author: "Azizov Aziz",
+            lessons: "40 ta dars",
+            buy: true,
+            id:6,
+        },
+        {
+            img: Audit,
+            price: "299 000 UZS",
+            name: "Audit",
+            author: "Azizov Aziz",
+            lessons: "40 ta dars",
+            buy: false,
+            id:7,
+        },
+        {
+            img: Audit,
+            price: "299 000 UZS",
+            name: "Audit",
+            author: "Azizov Aziz",
+            lessons: "40 ta dars",
+            buy: false,
+            id:8,
+        },
+        {
+            img: Audit,
+            price: "299 000 UZS",
+            name: "Audit",
+            author: "Azizov Aziz",
+            lessons: "40 ta dars",
+            buy: false,
+            id:9,
+        },
+        {
+            img: Audit,
+            price: "299 000 UZS",
+            name: "Audit",
+            author: "Azizov Aziz",
+            lessons: "40 ta dars",
+            buy: false,
+            id:10,
+        },
+        {
+            img: Audit,
+            price: "299 000 UZS",
+            name: "Audit",
+            author: "Azizov Aziz",
+            lessons: "40 ta dars",
+            buy: false,
+            id:11,
+        },
+        {
+            img: Audit,
+            price: "299 000 UZS",
+            name: "Audit",
+            author: "Azizov Aziz",
+            lessons: "40 ta dars",
+            buy: false,
+            id:12,
+        },
+        {
+            img: Audit,
+            price: "299 000 UZS",
+            name: "Audit",
+            author: "Azizov Aziz",
+            lessons: "40 ta dars",
+            buy: false,
+            id:13,
+        },
+        {
+            img: Audit,
+            price: "299 000 UZS",
+            name: "Audit",
+            author: "Azizov Aziz",
+            lessons: "40 ta dars",
+            buy: false,
+            id:14,
+        },
+        {
+            img: Audit,
+            price: "299 000 UZS",
+            name: "Audit",
+            author: "Azizov Aziz",
+            lessons: "40 ta dars",
+            buy: false,
+            id:15,
+        },
+        
+    ]
+
     const [currentPage, setCurrentPage] = useState(1);
     const coursesPerPage = 8;
     const totalPages = Math.ceil(coursesData.length / coursesPerPage);
+    const navigate = useNavigate();
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
+    };
+
+    const handlePlayClick = (courseId) => {
+        navigate(`/courses/${courseId}`); 
     };
 
     const currentCourses = coursesData.slice(
@@ -28,8 +169,8 @@ const ListCourses = () => {
         <div className='courses container'>
             <h3 className="courses-title">Courses</h3>
             <div className="courses-block">
-                {currentCourses.map((course, index) => (
-                    <div className="courses-card" key={index}>
+                {currentCourses.map((course) => (
+                    <div className="courses-card" key={course.id}>
                         <img className="course-img" src={course.img} alt="img" />
                         <div className="pricee">
                             <p className="price">{course.price}</p>
@@ -38,39 +179,18 @@ const ListCourses = () => {
                         <p className="course-author">{course.author}</p>
                         <div className="card-bottom">
                             <p className="course-number">{course.lessons}</p>
-                            <button className="button">Buy</button>
+                            <button 
+                                className="button"
+                                onClick={() => course.buy ? handlePlayClick(course.id) : null}
+                            >
+                                {course.buy ? "Play" : "Buy"}
+                            </button>
                         </div>
                     </div>
                 ))}
-            </div>
-            <div className="pagination">
-                <span className="page-label">Page</span>
-                <button
-                    className="page-arrow-left"
-                    onClick={() => handlePageChange(currentPage > 1 ? currentPage - 1 : 1)}
-                    disabled={currentPage === 1}
-                ></button>
-                <div className="page-number">
-                    {currentPage}
-                </div>
-                <button
-                    className="page-arrow-right"
-                    onClick={() => handlePageChange(currentPage < totalPages ? currentPage + 1 : totalPages)}
-                    disabled={currentPage === totalPages}></button>
-                <select
-                    className="page-select"
-                    onChange={(e) => handlePageChange(Number(e.target.value))}>
-                    <option selected disabled >{totalPages}</option>
-                    {Array.from({ length: totalPages }, (_, i) => (
-                        <option key={i} value={i + 1}>
-                            {i + 1}
-                        </option>
-                    ))}
-                </select>
             </div>
 
         </div>
     );
 };
-
 export default ListCourses;

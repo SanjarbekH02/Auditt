@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './Lessons.css'
+import React, { useEffect, useRef, useState } from 'react';
+import './Courses.css'
 import BookImg from '../../images/img.png'
 import WarningImg from '../../images/warning.svg'
 import Lock from '../../images/lock.svg'
@@ -8,12 +8,15 @@ import 'react-html5video/dist/styles.css';
 import VideoEl from '../../images/vid.mp4'
 import html2pdf from 'html2pdf.js';
 import "remixicon/fonts/remixicon.css";
-import ListCourses from '../../Pages/ListCourses/ListCourses'
+import ListCourses from '../ListCourses/ListCourses'
+import Robot from '../../images/robot.png'
 
 const Lessons = () => {
 
-    const [isLogin, setIsLogin] = useState(true)
+    const [isLogin, setIsLogin] = useState(false)
     const [playLesson, setPlayLesson] = useState(false)
+    const chatBodyRef = useRef(null)
+
     const textContent = `
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ac a, porttitor ac arcu morbi bibendum interdum non. Nisi etiam posuere orci lacus neque Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ac a, porttitor ac arcu morbi bibendum interdum non. Nisi etiam posuere orci lacus neque Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ac a, porttitor ac arcu morbi bibendum interdum non. Nisi etiam posuere orci lacus neque Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ac a, porttitor ac arcu morbi bibendum interdum non. Nisi etiam posuere orci lacus neque Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ac a, porttitor ac arcu morbi bibendum interdum non. Nisi etiam posuere orci lacus neque 
   `;
@@ -72,14 +75,20 @@ const Lessons = () => {
 
         return `${day} ${month} ${year}`;
     };
+
+    useEffect(() => {
+        if (chatBodyRef.current) {
+            chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
+        }
+    }, [messages, inputMessage]);
+
     return (
         <>
-            {
-                isLogin ? (
-                    <div className='container'>
-                        {
-                            playLesson ? (
-                                <div className="lesson">
+
+            <div className='container'>
+                {
+                    playLesson ? (
+                        <div className="lesson">
                             <div className="video-block">
                                 <div className="lesson-block">
                                     <div className="lesson-name">
@@ -113,13 +122,13 @@ const Lessons = () => {
                                 <div className="chat-container">
                                     <h2 className='chat-title'>Darsga oid savollarga:</h2>
                                     <div className="chat-header">
-                                        <i class="ri-robot-2-fill"></i>
+                                        <img src={Robot} alt="robot" />
                                         <div className="chat-name-block">
                                             <h3 className="chat-name"><span className="blue-text">Suniiy intelekt</span> javob beradi</h3>
                                             <p className="online-text">Online</p>
                                         </div>
                                     </div>
-                                    <div className="chat-body">
+                                    <div className="chat-body" ref={chatBodyRef}>
                                         <p className="date">{formatDate()}</p>
                                         {messages.map((msg, index) => (
                                             <div key={index} className="message">
@@ -145,13 +154,13 @@ const Lessons = () => {
                                             value={input}
                                             onChange={(e) => setInput(e.target.value)}
                                             onKeyDown={(e) => e.key === 'Enter' && handleSend()} />
-                                        <button onClick={handleSend}>submit <i class="ri-telegram-2-fill"></i></button>
+                                        <button onClick={handleSend}>submit <i className="ri-telegram-2-fill"></i></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                            ) : (
-                                <div className="play">
+                    ) : (
+                        <div className="play">
                             <img src={BookImg} alt="img" className="play-img" />
                             <div className="play-block">
                                 <div className="play-left">
@@ -164,38 +173,34 @@ const Lessons = () => {
                                 </div>
                             </div>
                         </div>
-                            )
-                        }
+                    )
+                }
 
-                        <div className="warning">
-                            <img src={WarningImg} alt="Warning" className="warning-img" />
-                            <p className="warning-text">Kurs yakunida sertifikat olish un 1 yil ichida olishi mumkinligini, 1 yil o’tib ketsa ololmasligini eslatib turuvchi tekst bo’lishi kerak shu yerda</p>
-                        </div>
-                        <div className="div next-lessons">
-                            <h2 className="courses-title">Keyingi darslar</h2>
-                            <div className="courses-block">
-                                {courses.map(course => (
-                                    <div className="courses-card" key={course.id}>
-                                        <div className='lock-lesson'>
-                                            <img className="lesson-img" src={BookImg} alt="img" />
-                                            <div className="block-lesson">
-                                                <img src={Lock} alt="lock" />
-                                            </div>
-                                        </div>
-                                        <h3 className="course-name">{course.name}</h3>
-                                        <p className="course-author">{course.author}</p>
-                                        <div className="card-bottom">
-                                            <p className="course-number lessons-number">{course.lessonNumber}</p>
-                                        </div>
+                <div className="warning">
+                    <img src={WarningImg} alt="Warning" className="warning-img" />
+                    <p className="warning-text">Kurs yakunida sertifikat olish un 1 yil ichida olishi mumkinligini, 1 yil o’tib ketsa ololmasligini eslatib turuvchi tekst bo’lishi kerak shu yerda</p>
+                </div>
+                <div className="div next-lessons">
+                    <h2 className="courses-title">Keyingi darslar</h2>
+                    <div className="courses-block">
+                        {courses.map(course => (
+                            <div className="courses-card" key={course.id}>
+                                <div className='lock-lesson'>
+                                    <img className="lesson-img" src={BookImg} alt="img" />
+                                    <div className="block-lesson">
+                                        <img src={Lock} alt="lock" />
                                     </div>
-                                ))}
+                                </div>
+                                <h3 className="course-name">{course.name}</h3>
+                                <p className="course-author">{course.author}</p>
+                                <div className="card-bottom">
+                                    <p className="course-number lessons-number">{course.lessonNumber}</p>
+                                </div>
                             </div>
-                        </div>
+                        ))}
                     </div>
-                ) : (
-                    <ListCourses />
-                )
-            }
+                </div>
+            </div>
         </>
     );
 }
