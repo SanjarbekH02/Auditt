@@ -47,7 +47,7 @@ const Home = () => {
                         <div className="adventages-left">
                             <button className='adventages-btn'>Afzalliklari</button>
                             <h2 className="adventages-title">Bir vaqtning o’zida 2 ta kurs sotib oling va <span className="yellow-text">3 chisini bepulga</span> ega boling</h2>
-                            <button className="button btn">Learn More</button>
+                            <button className="button more-btn">Learn More</button>
                         </div>
                         <div className="adventages-right">
                             <img className='sell-img' src={Sell} alt="img" />

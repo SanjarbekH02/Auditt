@@ -10,6 +10,7 @@ import html2pdf from 'html2pdf.js';
 import "remixicon/fonts/remixicon.css";
 import ListCourses from '../ListCourses/ListCourses'
 import Robot from '../../images/robot.png'
+import ScrollToTop from '../../Components/ScrollTop/ScrollTop';
 
 const Lessons = () => {
 
@@ -89,6 +90,7 @@ const Lessons = () => {
                 {
                     playLesson ? (
                         <div className="lesson">
+                            <ScrollToTop/>
                             <div className="video-block">
                                 <div className="lesson-block">
                                     <div className="lesson-name">
@@ -113,10 +115,10 @@ const Lessons = () => {
                                         <h2 className="course-name">Darsga oid yozma materiallar:</h2>
                                         <p className="materials">{textContent}</p>
                                     </div>
-                                    <div className="downlaod">
+                                    {/* <div className="downlaod">
                                         <span className='downlaod-text'>Fayl yuklab olish</span>
                                         <button onClick={handleDownloadPdf} className="downlaod-btn"> <i class="ri-folder-fill"> </i> Audit.pdf</button>
-                                    </div>
+                                    </div> */}
                                 </div>
 
                                 <div className="chat-container">

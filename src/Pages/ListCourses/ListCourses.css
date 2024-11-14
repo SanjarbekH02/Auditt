@@ -161,3 +161,116 @@
     background-color: inherit;
     padding-left: 10px;
 }
+
+.icon-none{
+    display: none;
+}
+
+
+@media only screen and (max-width: 550px) {
+    .courses{
+        padding: 20px 0;
+        margin-bottom: 40px;
+    }
+    
+    .courses-title{
+        font-weight: 500;
+        font-size: 20px;
+    }
+    
+    .courses-block{
+        margin-top: 20px;
+        justify-content: space-between;
+    }
+    
+    .courses-card{
+        width: 49%;
+        border-radius: 9px;
+        margin-bottom: 15px;
+    }
+    
+    .price{
+        font-size: 12px;
+    }
+    
+    .course-name{
+        font-size: 14px;
+        padding: 8px 0;
+    }
+    
+    .course-author{
+        font-size: 12px;
+    }
+    
+    .course-number{
+        font-size: 12px;
+    }
+    
+    .play-btn{
+        display: flex;
+        font-size: 12px;
+        width: 80px;
+        padding: 5px;
+        justify-content: center;
+    }
+
+    .play-btn::after{
+        top: 9px;
+        right: 14px;
+    }
+    
+    
+    .page-label {
+        display: none;
+    }
+
+    .icon-none{
+        display: flex;
+    }
+
+    .pagination{
+        margin-top: 20px;
+    }
+    
+    .page-arrow-left,  .page-arrow-right{
+        width: 30px;
+        height: 30px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        border-radius: 50%;
+        background: linear-gradient(to right, #FF7373, #CD2525);
+
+    }
+
+
+    
+    .page-arrow-left-after::after{
+       display: none;
+    }
+    
+    .page-arrow-right-after::after{
+       display: none;
+    }
+    
+    .page-arrow-left:disabled {
+        background: #64748B;
+        cursor: default;
+    }
+    
+    .page-arrow-right:disabled {
+        background: #64748B;
+        cursor: default;
+    }
+    
+    .page-number {
+       display: none;
+    }
+    
+    .page-select {
+       display: none;
+        padding-left: 10px;
+    }
+}

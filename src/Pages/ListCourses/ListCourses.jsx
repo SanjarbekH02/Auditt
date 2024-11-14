@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Audit from '../../images/img.png';
 import Courses from '../Courses/Courses'
 import './ListCourses.css'
@@ -15,9 +15,9 @@ const ListCourses = () => {
             author: "Azizov Aziz",
             lessons: "40 ta dars",
             buy: true,
-            id:1,
+            id: 1,
         },
-    
+
         {
             img: Audit,
             price: "299 000 UZS",
@@ -25,7 +25,7 @@ const ListCourses = () => {
             author: "Azizov Aziz",
             lessons: "40 ta dars",
             buy: false,
-            id:2,
+            id: 2,
         },
         {
             img: Audit,
@@ -34,7 +34,7 @@ const ListCourses = () => {
             author: "Azizov Aziz",
             lessons: "40 ta dars",
             buy: true,
-            id:3,
+            id: 3,
         },
         {
             img: Audit,
@@ -43,7 +43,7 @@ const ListCourses = () => {
             author: "Azizov Aziz",
             lessons: "40 ta dars",
             buy: true,
-            id:4,
+            id: 4,
         },
         {
             img: Audit,
@@ -52,7 +52,7 @@ const ListCourses = () => {
             author: "Azizov Aziz",
             lessons: "40 ta dars",
             buy: false,
-            id:5,
+            id: 5,
         },
         {
             img: Audit,
@@ -61,7 +61,7 @@ const ListCourses = () => {
             author: "Azizov Aziz",
             lessons: "40 ta dars",
             buy: true,
-            id:6,
+            id: 6,
         },
         {
             img: Audit,
@@ -70,7 +70,7 @@ const ListCourses = () => {
             author: "Azizov Aziz",
             lessons: "40 ta dars",
             buy: false,
-            id:7,
+            id: 7,
         },
         {
             img: Audit,
@@ -79,7 +79,7 @@ const ListCourses = () => {
             author: "Azizov Aziz",
             lessons: "40 ta dars",
             buy: false,
-            id:8,
+            id: 8,
         },
         {
             img: Audit,
@@ -88,7 +88,7 @@ const ListCourses = () => {
             author: "Azizov Aziz",
             lessons: "40 ta dars",
             buy: false,
-            id:9,
+            id: 9,
         },
         {
             img: Audit,
@@ -97,7 +97,7 @@ const ListCourses = () => {
             author: "Azizov Aziz",
             lessons: "40 ta dars",
             buy: false,
-            id:10,
+            id: 10,
         },
         {
             img: Audit,
@@ -106,7 +106,7 @@ const ListCourses = () => {
             author: "Azizov Aziz",
             lessons: "40 ta dars",
             buy: false,
-            id:11,
+            id: 11,
         },
         {
             img: Audit,
@@ -115,7 +115,7 @@ const ListCourses = () => {
             author: "Azizov Aziz",
             lessons: "40 ta dars",
             buy: false,
-            id:12,
+            id: 12,
         },
         {
             img: Audit,
@@ -124,7 +124,7 @@ const ListCourses = () => {
             author: "Azizov Aziz",
             lessons: "40 ta dars",
             buy: false,
-            id:13,
+            id: 13,
         },
         {
             img: Audit,
@@ -133,7 +133,7 @@ const ListCourses = () => {
             author: "Azizov Aziz",
             lessons: "40 ta dars",
             buy: false,
-            id:14,
+            id: 14,
         },
         {
             img: Audit,
@@ -142,13 +142,13 @@ const ListCourses = () => {
             author: "Azizov Aziz",
             lessons: "40 ta dars",
             buy: false,
-            id:15,
+            id: 15,
         },
-        
+
     ]
 
     const [currentPage, setCurrentPage] = useState(1);
-    const coursesPerPage = 8;
+    const [coursesPerPage, setCoursesPerPage] = useState(8)
     const totalPages = Math.ceil(coursesData.length / coursesPerPage);
     const navigate = useNavigate();
 
@@ -157,8 +157,21 @@ const ListCourses = () => {
     };
 
     const handlePlayClick = (courseId) => {
-        navigate(`/courses/${courseId}`); 
+        navigate(`/courses/${courseId}`);
     };
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+                setCoursesPerPage(4);
+            } else {
+                setCoursesPerPage(8);
+            }
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const currentCourses = coursesData.slice(
         (currentPage - 1) * coursesPerPage,
@@ -179,8 +192,8 @@ const ListCourses = () => {
                         <p className="course-author">{course.author}</p>
                         <div className="card-bottom">
                             <p className="course-number">{course.lessons}</p>
-                            <button 
-                                className="button"
+                            <button
+                                className="button play-btn"
                                 onClick={() => course.buy ? handlePlayClick(course.id) : null}
                             >
                                 {course.buy ? "Play" : "Buy"}
@@ -188,23 +201,24 @@ const ListCourses = () => {
                         </div>
                     </div>
                 ))}
-                
+
             </div>
             <div className="pagination">
                 <span className="page-label">Page</span>
                 <button
-                    className="page-arrow-left"
+                    className="page-arrow-left page-arrow-left-after"
                     onClick={() => handlePageChange(currentPage > 1 ? currentPage - 1 : 1)}
                     disabled={currentPage === 1}
-                ></button>
+                ><i class="ri-arrow-left-s-line icon-none"></i></button>
                 <div className="page-number">
                     {currentPage}
                 </div>
                 <button
-                    className="page-arrow-right"
+                    className="page-arrow-right page-arrow-right-after"
                     onClick={() => handlePageChange(currentPage < totalPages ? currentPage + 1 : totalPages)}
                     disabled={currentPage === totalPages}
-                ></button>
+                    
+                ><i class="ri-arrow-right-s-line icon-none"></i></button>
                 <select
                     className="page-select"
                     onChange={(e) => handlePageChange(Number(e.target.value))}

@@ -1,0 +1,143 @@
+.quiz{
+    margin-bottom: 60vh;
+}
+
+.quiz-play{
+    margin-top: 0;
+}
+
+.lesson-quiz{
+    margin-bottom: 60vh;
+}
+
+.lesson-complaint{
+    width: fit-content;
+    margin-left: auto;
+    margin-bottom: 20px;
+}
+
+.write-quiz-block{
+    width: 100%;
+    justify-content: space-between;
+}
+
+.written-quiz{
+    width: 30%;
+    background-color: white;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.quiz-info{
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 5px 0;
+    color: #64748B;
+}
+
+.quiz-chat{
+    width: 65%;
+}
+
+.quiz-chat-block{
+    width: 100%;
+}
+
+.quiz-chat-body{
+    height: 430px;
+}
+
+.score-number{
+    width: 65%;
+    margin-left: auto;
+    padding: 20px;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 20px;
+    background-color: white;
+    border-radius: 16px;
+    margin-top: 15px;
+    color: #64748B;
+}
+
+.quiz-modal{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #eceaf9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quiz-modal-content{
+    width: 550px;
+    /* height: 450px; */
+    background-color: white;
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+.quiz-messeg{
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 24px;
+    color: #4AC87B;
+    line-height: 30px;
+    padding: 20px;
+}
+
+.quiz-modal-score{
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 20px;
+    color: #64748B;
+    padding-bottom: 50px;
+}
+
+.quiz-modal-btn{
+    width: 300px;
+    padding: 14px;
+    color: white;
+    background:linear-gradient(to right, #FF7373, #CD2525) ;
+    border: none;
+    border-radius: 12px;
+    margin-top: 40px;
+}
+
+.quiz-modal-btn:hover{
+    background: linear-gradient(#FF7373, #CD2525);
+    box-shadow: 0 0 3px #FF7373;
+}
+
+.modal-back{
+    width: 300px;
+    padding: 14px;
+    color: #CD2525;
+    background-color: white;
+    border: 2px solid #CD2525;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.modal-back:hover{
+    box-shadow: 0 0 5px #FF7373;
+}
+
+.quiz-modal-reply{
+    width: 250px;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 29px;
+    color: #64748B;
+    text-align: center;
+}
