@@ -346,9 +346,10 @@
     }
     
     .appeal-cancel{
-        width: 170px;
+        width: 150px;
         border-radius: 8px;
         margin-right: 0;
+        font-size: 14px;
     }
     
     .appeal-cancel:hover{
@@ -356,14 +357,10 @@
     }
     
     .appeal-confirm{
-        width: 170px;
+        width: 150px;
         border-radius: 8px;
         margin-right: 0;
-    }
-    
-    .appeal-confirm:hover{
-        background: linear-gradient(#FF7373, #CD2525);
-        box-shadow: 0 0 3px #FF7373;
+        font-size: 14px;
     }
     
     .certificates{
