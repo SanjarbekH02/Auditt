@@ -11,16 +11,9 @@ import "remixicon/fonts/remixicon.css";
 import ListCourses from '../ListCourses/ListCourses'
 import Robot from '../../images/robot.png'
 import ScrollToTop from '../../Components/ScrollTop/ScrollTop';
+import { useNavigate } from 'react-router-dom';
 
 const Lessons = () => {
-
-    const [isLogin, setIsLogin] = useState(false)
-    const [playLesson, setPlayLesson] = useState(false)
-    const chatBodyRef = useRef(null)
-
-    const textContent = `
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ac a, porttitor ac arcu morbi bibendum interdum non. Nisi etiam posuere orci lacus neque Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ac a, porttitor ac arcu morbi bibendum interdum non. Nisi etiam posuere orci lacus neque Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ac a, porttitor ac arcu morbi bibendum interdum non. Nisi etiam posuere orci lacus neque Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ac a, porttitor ac arcu morbi bibendum interdum non. Nisi etiam posuere orci lacus neque Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ac a, porttitor ac arcu morbi bibendum interdum non. Nisi etiam posuere orci lacus neque 
-  `;
 
     const courses = [
         { id: 1, name: 'Audit', author: 'Azizov Aziz', lessonNumber: '2-dars' },
@@ -31,7 +24,55 @@ const Lessons = () => {
         { id: 6, name: 'Audit', author: 'Azizov Aziz', lessonNumber: '7-dars' },
         { id: 7, name: 'Audit', author: 'Azizov Aziz', lessonNumber: '8-dars' },
         { id: 8, name: 'Audit', author: 'Azizov Aziz', lessonNumber: '9-dars' },
+        { id: 8, name: 'Audit', author: 'Azizov Aziz', lessonNumber: '10-dars' },
+        { id: 8, name: 'Audit', author: 'Azizov Aziz', lessonNumber: '11-dars' },
+        { id: 8, name: 'Audit', author: 'Azizov Aziz', lessonNumber: '12-dars' },
+        { id: 8, name: 'Audit', author: 'Azizov Aziz', lessonNumber: '13-dars' },
+        { id: 8, name: 'Audit', author: 'Azizov Aziz', lessonNumber: '14-dars' },
     ];
+
+    const [playLesson, setPlayLesson] = useState(false)
+    const chatBodyRef = useRef(null)
+    const [hiddenChat, setHiddenChat] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [coursesPerPage, setCoursesPerPage] = useState(8)
+    const totalPages = Math.ceil(courses.length / coursesPerPage);
+    const navigate = useNavigate();
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
+    const hideChatHandle = () => {
+        setHiddenChat(false)
+    }
+
+    const handlePlayClick = (courseId) => {
+        navigate(`/courses/${courseId}`);
+    };
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 550) {
+                setCoursesPerPage(4);
+                setHiddenChat(true)
+            } else {
+                setCoursesPerPage(8);
+            }
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const currentCourses = courses.slice(
+        (currentPage - 1) * coursesPerPage,
+        currentPage * coursesPerPage
+    );
+
+    const textContent = `
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ac a, porttitor ac arcu morbi bibendum interdum non. Nisi etiam posuere orci lacus neque Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ac a, porttitor ac arcu morbi bibendum interdum non. Nisi etiam posuere orci lacus neque Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ac a, porttitor ac arcu morbi bibendum interdum non. Nisi etiam posuere orci lacus neque Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ac a, porttitor ac arcu morbi bibendum interdum non. Nisi etiam posuere orci lacus neque Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ac a, porttitor ac arcu morbi bibendum interdum non. Nisi etiam posuere orci lacus neque 
+  `;
 
     const playLessonHandle = () => {
         setPlayLesson(true)
@@ -90,11 +131,11 @@ const Lessons = () => {
                 {
                     playLesson ? (
                         <div className="lesson">
-                            <ScrollToTop/>
+                            <ScrollToTop />
                             <div className="video-block">
                                 <div className="lesson-block">
-                                    <div className="lesson-name">
-                                        <h2 className="course-name">Audit</h2>
+                                    <div className="lesson-name video-name">
+                                        <h2 className="course-name video-title">Audit</h2>
                                         <p className="course-author">Azizov Aziz</p>
                                     </div>
                                     <div className="complaint">
@@ -112,7 +153,7 @@ const Lessons = () => {
                             <div className="write-block">
                                 <div className="written-material">
                                     <div>
-                                        <h2 className="course-name">Darsga oid yozma materiallar:</h2>
+                                        <h2 className="course-name material-title">Darsga oid yozma materiallar:</h2>
                                         <p className="materials">{textContent}</p>
                                     </div>
                                     {/* <div className="downlaod">
@@ -120,45 +161,46 @@ const Lessons = () => {
                                         <button onClick={handleDownloadPdf} className="downlaod-btn"> <i class="ri-folder-fill"> </i> Audit.pdf</button>
                                     </div> */}
                                 </div>
+                                {!hiddenChat && (
+                                    <div className="chat-container">
+                                        <h2 className='chat-title'>Darsga oid savollarga:</h2>
+                                        <div className="chat-header">
+                                            <img src={Robot} alt="robot" />
+                                            <div className="chat-name-block">
+                                                <h3 className="chat-name"><span className="blue-text">Suniiy intelekt</span> javob beradi</h3>
+                                                <p className="online-text">Online</p>
+                                            </div>
+                                        </div>
+                                        <div className="chat-body" ref={chatBodyRef}>
+                                            <p className="date">{formatDate()}</p>
+                                            {messages.map((msg, index) => (
+                                                <div key={index} className="message">
+                                                    <p className='message-bot'>{msg.text}</p>
+                                                    <p className="time">{msg.time}</p>
+                                                </div>
+                                            ))}
 
-                                <div className="chat-container">
-                                    <h2 className='chat-title'>Darsga oid savollarga:</h2>
-                                    <div className="chat-header">
-                                        <img src={Robot} alt="robot" />
-                                        <div className="chat-name-block">
-                                            <h3 className="chat-name"><span className="blue-text">Suniiy intelekt</span> javob beradi</h3>
-                                            <p className="online-text">Online</p>
+                                            {inputMessage.map((mesEl, index) => (
+                                                <div key={index} className="input-mes-block">
+                                                    <div className='mes-block'>
+                                                        <p className="input-mes">{mesEl.text}</p>
+                                                        <p className="time time-user">{mesEl.time}</p>
+                                                    </div>
+                                                </div>
+                                            ))}
+
+                                        </div>
+                                        <div className="chat-input">
+                                            <input
+                                                type="text"
+                                                placeholder="Your message"
+                                                value={input}
+                                                onChange={(e) => setInput(e.target.value)}
+                                                onKeyDown={(e) => e.key === 'Enter' && handleSend()} />
+                                            <button onClick={handleSend}>submit <i className="ri-telegram-2-fill"></i></button>
                                         </div>
                                     </div>
-                                    <div className="chat-body" ref={chatBodyRef}>
-                                        <p className="date">{formatDate()}</p>
-                                        {messages.map((msg, index) => (
-                                            <div key={index} className="message">
-                                                <p className='message-bot'>{msg.text}</p>
-                                                <p className="time">{msg.time}</p>
-                                            </div>
-                                        ))}
-
-                                        {inputMessage.map((mesEl, index) => (
-                                            <div key={index} className="input-mes-block">
-                                                <div className='mes-block'>
-                                                    <p className="input-mes">{mesEl.text}</p>
-                                                    <p className="time time-user">{mesEl.time}</p>
-                                                </div>
-                                            </div>
-                                        ))}
-
-                                    </div>
-                                    <div className="chat-input">
-                                        <input
-                                            type="text"
-                                            placeholder="Your message"
-                                            value={input}
-                                            onChange={(e) => setInput(e.target.value)}
-                                            onKeyDown={(e) => e.key === 'Enter' && handleSend()} />
-                                        <button onClick={handleSend}>submit <i className="ri-telegram-2-fill"></i></button>
-                                    </div>
-                                </div>
+                                )}
                             </div>
                         </div>
                     ) : (
@@ -178,14 +220,17 @@ const Lessons = () => {
                     )
                 }
 
-                <div className="warning">
+                <div className="warning warning-hide">
                     <img src={WarningImg} alt="Warning" className="warning-img" />
                     <p className="warning-text">Kurs yakunida sertifikat olish un 1 yil ichida olishi mumkinligini, 1 yil o’tib ketsa ololmasligini eslatib turuvchi tekst bo’lishi kerak shu yerda</p>
                 </div>
+                {playLesson & hiddenChat ? (
+                    <button onClick={hideChatHandle} className="open-chat">Darsga oid savol berish  <i class="ri-add-circle-line"></i></button>
+                ) : ("")}
                 <div className="div next-lessons">
                     <h2 className="courses-title">Keyingi darslar</h2>
                     <div className="courses-block">
-                        {courses.map(course => (
+                        {currentCourses.map(course => (
                             <div className="courses-card" key={course.id}>
                                 <div className='lock-lesson'>
                                     <img className="lesson-img" src={BookImg} alt="img" />
@@ -193,13 +238,41 @@ const Lessons = () => {
                                         <img src={Lock} alt="lock" />
                                     </div>
                                 </div>
-                                <h3 className="course-name">{course.name}</h3>
-                                <p className="course-author">{course.author}</p>
+                                <h3 className="course-name lesson-name">{course.name}</h3>
+                                <p className="course-author lesson-author">{course.author}</p>
                                 <div className="card-bottom">
                                     <p className="course-number lessons-number">{course.lessonNumber}</p>
                                 </div>
                             </div>
                         ))}
+                    </div>
+                    <div className="pagination">
+                        <span className="page-label">Page</span>
+                        <button
+                            className="page-arrow-left page-arrow-left-after"
+                            onClick={() => handlePageChange(currentPage > 1 ? currentPage - 1 : 1)}
+                            disabled={currentPage === 1}
+                        ><i class="ri-arrow-left-s-line icon-none"></i></button>
+                        <div className="page-number">
+                            {currentPage}
+                        </div>
+                        <button
+                            className="page-arrow-right page-arrow-right-after"
+                            onClick={() => handlePageChange(currentPage < totalPages ? currentPage + 1 : totalPages)}
+                            disabled={currentPage === totalPages}
+
+                        ><i class="ri-arrow-right-s-line icon-none"></i></button>
+                        <select
+                            className="page-select"
+                            onChange={(e) => handlePageChange(Number(e.target.value))}
+                        >
+                            <option selected disabled>{totalPages}</option>
+                            {Array.from({ length: totalPages }, (_, i) => (
+                                <option key={i} value={i + 1}>
+                                    {i + 1}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                 </div>
             </div>
