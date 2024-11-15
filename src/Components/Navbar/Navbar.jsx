@@ -20,7 +20,7 @@ const Navbar = () => {
         setActiveNav(x=>!x)
     }
     const closeHandle = () => {
-        setIsModalOpen(x => !x)
+        setIsModalOpen(false)
     }
     return (
         <div className="container">
