@@ -224,9 +224,9 @@ const Lessons = () => {
                     <img src={WarningImg} alt="Warning" className="warning-img" />
                     <p className="warning-text">Kurs yakunida sertifikat olish un 1 yil ichida olishi mumkinligini, 1 yil o’tib ketsa ololmasligini eslatib turuvchi tekst bo’lishi kerak shu yerda</p>
                 </div>
-                {playLesson && (
+                {playLesson & !hiddenChat ? (
                     <button onClick={hideChatHandle} className="open-chat">Darsga oid savol berish  <i class="ri-add-circle-line"></i></button>
-                )}
+                ):('')}
                 <div className="div next-lessons">
                     <h2 className="courses-title">Keyingi darslar</h2>
                     <div className="courses-block">

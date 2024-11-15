@@ -260,19 +260,6 @@
   background: linear-gradient(#FFA0A0, #F52C2C);
 }
 
-.oneId {
-  width: 100%;
-  border-radius: 12px;
-  background-color: #4624BC;
-  padding: 15px 30px;
-  border: none;
-  margin-top: 20px;
-  font-family: Inter;
-  font-weight: 400;
-  font-size: 20px;
-  color: white;
-}
-
 .list-logo-block{
   display: none;
 }
@@ -364,4 +351,44 @@
   .select-nav{
     display: flex;
   }
+  
+  .modalLogin-content {
+    width: 320px;
+    padding: 10px;
+    border-radius: 12px;
+  }
+  
+  .citizenship{
+    padding:6px 0;
+  }
+  
+  .citizenship-btn{
+    width: 50%;
+    font-size: 16px;
+    border: none;
+    background-color: inherit;
+    padding: 10px 10px;
+  }
+  
+  .citizenship-active{
+    background-color: #4624BC;
+    color: white;
+  }
+  
+  .cancel {
+    width: 140px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .cancel:hover {
+    background-color: rgb(236, 233, 233);
+  }
+  
+  .submit {
+    width: 140px;
+    padding: 10px!important;
+    font-size: 16px;
+  }
+
 }
