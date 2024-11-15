@@ -44,7 +44,7 @@ const Lessons = () => {
     };
 
     const hideChatHandle = () => {
-        setHiddenChat(false)
+        setHiddenChat(true)
     }
 
     const handlePlayClick = (courseId) => {
@@ -55,7 +55,6 @@ const Lessons = () => {
         const handleResize = () => {
             if (window.innerWidth <= 550) {
                 setCoursesPerPage(4);
-                setHiddenChat(true)
             } else {
                 setCoursesPerPage(8);
             }
@@ -163,46 +162,45 @@ const Lessons = () => {
                                         <button onClick={handleDownloadPdf} className="downlaod-btn"> <i class="ri-folder-fill"> </i> Audit.pdf</button>
                                     </div> */}
                                 </div>
-                                {!hiddenChat && (
-                                    <div className="chat-container">
-                                        <h2 className='chat-title'>Darsga oid savollarga:</h2>
-                                        <div className="chat-header">
-                                            <img src={Robot} alt="robot" />
-                                            <div className="chat-name-block">
-                                                <h3 className="chat-name"><span className="blue-text">Suniiy intelekt</span> javob beradi</h3>
-                                                <p className="online-text">Online</p>
-                                            </div>
-                                        </div>
-                                        <div className="chat-body" ref={chatBodyRef}>
-                                            <p className="date">{formatDate()}</p>
-                                            {messages.map((msg, index) => (
-                                                <div key={index} className="message">
-                                                    <p className='message-bot'>{msg.text}</p>
-                                                    <p className="time">{msg.time}</p>
-                                                </div>
-                                            ))}
-
-                                            {inputMessage.map((mesEl, index) => (
-                                                <div key={index} className="input-mes-block">
-                                                    <div className='mes-block'>
-                                                        <p className="input-mes">{mesEl.text}</p>
-                                                        <p className="time time-user">{mesEl.time}</p>
-                                                    </div>
-                                                </div>
-                                            ))}
-
-                                        </div>
-                                        <div className="chat-input">
-                                            <input
-                                                type="text"
-                                                placeholder="Your message"
-                                                value={input}
-                                                onChange={(e) => setInput(e.target.value)}
-                                                onKeyDown={(e) => e.key === 'Enter' && handleSend()} />
-                                            <button onClick={handleSend}>submit <i className="ri-telegram-2-fill"></i></button>
+                                <div className={`chat-container ${hiddenChat &&  "hidden-active"}`}>
+                                    <h2 className='chat-title'>Darsga oid savollarga:</h2>
+                                    <div className="chat-header">
+                                        <img src={Robot} alt="robot" />
+                                        <div className="chat-name-block">
+                                            <h3 className="chat-name"><span className="blue-text">Suniiy intelekt</span> javob beradi</h3>
+                                            <p className="online-text">Online</p>
                                         </div>
                                     </div>
-                                )}
+                                    <div className="chat-body" ref={chatBodyRef}>
+                                        <p className="date">{formatDate()}</p>
+                                        {messages.map((msg, index) => (
+                                            <div key={index} className="message">
+                                                <p className='message-bot'>{msg.text}</p>
+                                                <p className="time">{msg.time}</p>
+                                            </div>
+                                        ))}
+
+                                        {inputMessage.map((mesEl, index) => (
+                                            <div key={index} className="input-mes-block">
+                                                <div className='mes-block'>
+                                                    <p className="input-mes">{mesEl.text}</p>
+                                                    <p className="time time-user">{mesEl.time}</p>
+                                                </div>
+                                            </div>
+                                        ))}
+
+                                    </div>
+                                    <div className="chat-input">
+                                        <input
+                                            type="text"
+                                            placeholder="Your message"
+                                            value={input}
+                                            onChange={(e) => setInput(e.target.value)}
+                                            onKeyDown={(e) => e.key === 'Enter' && handleSend()} />
+                                        <button onClick={handleSend}>submit <i className="ri-telegram-2-fill"></i></button>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     ) : (
@@ -226,9 +224,9 @@ const Lessons = () => {
                     <img src={WarningImg} alt="Warning" className="warning-img" />
                     <p className="warning-text">Kurs yakunida sertifikat olish un 1 yil ichida olishi mumkinligini, 1 yil o’tib ketsa ololmasligini eslatib turuvchi tekst bo’lishi kerak shu yerda</p>
                 </div>
-                {playLesson & hiddenChat ? (
+                {playLesson && (
                     <button onClick={hideChatHandle} className="open-chat">Darsga oid savol berish  <i class="ri-add-circle-line"></i></button>
-                ) : ("")}
+                )}
                 <div className="div next-lessons">
                     <h2 className="courses-title">Keyingi darslar</h2>
                     <div className="courses-block">

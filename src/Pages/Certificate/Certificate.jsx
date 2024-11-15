@@ -39,7 +39,7 @@ const Sertificate = () => {
                 !certificate & !fillingApp ? (
                     <div className='container'>
                         <div className="lesson-block">
-                            <div className="lesson-name">
+                            <div className="lesson-name certificate-namee">
                                 <h2 className="course-name">Mening sertifikatlarim</h2>
                             </div>
                             <div className="complaint">
@@ -50,7 +50,7 @@ const Sertificate = () => {
                             </div>
                         </div>
                         <div className="certificate-block">
-                            <img src={NoCertificate} alt="certificate img" />
+                            <img className='noCertificate' src={NoCertificate} alt="certificate img" />
                             <p className="certificate-desc">Sizda hozircha sertifikatlar yo’q, olish uchun murojat qoldiring</p>
                             <button onClick={fillingHandle} className="certificate-btn">Murojaat qoldirish</button>
                         </div>
@@ -58,7 +58,7 @@ const Sertificate = () => {
                 ) : !certificate &&(
                     <div className='container'>
                         <ScrollToTop />
-                        <div className="appeal">
+                        <form className="appeal">
                             <h2 className="appeal-title">Sertifikat uchun murojaat</h2>
                             <div className="appeal-text">
                                 <div className="appeal-text-left">
@@ -106,7 +106,7 @@ const Sertificate = () => {
                                 <button onClick={fillingHandle} className="appeal-cancel">Cancel</button>
                                 <button type='submit' className="appeal-confirm">Confirm</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 )
 

@@ -24,7 +24,7 @@ import SuccesImg from '../../images/success-quiz.png';
 import UpsetImg from '../../images/upset.png';
 
 const QuizModal = ({  }) => {
-    const score = 200
+    const score = 40
 
     const isPassed = score >= 92;
 
@@ -35,7 +35,7 @@ const QuizModal = ({  }) => {
                 <p className="quiz-modal-score">
                     To'plagan balingiz: {score}
                 </p>
-                <img src={isPassed ? SuccesImg : UpsetImg} alt={isPassed ? "Success" : "Upset"} />
+                <img className='success-img' src={isPassed ? SuccesImg : UpsetImg} alt={isPassed ? "Success" : "Upset"} />
                 {isPassed ? (
                     ""
                 ) : (

@@ -34,6 +34,7 @@
 .play-btn {
   position: relative;
   padding-right: 40px;
+  z-index: 0;
 }
 
 .play-btn::after {
@@ -47,6 +48,7 @@
   right: 25px;
   transform: rotate(-45deg);
   cursor: pointer;
+  z-index: 0;
 }
 
 .warning {
@@ -431,6 +433,10 @@
     display: none;
   }
 
+  .lesson-block{
+    padding: 0;
+  }
+
   .lock-lesson {
     width: 100%;
     height: fit-content;
@@ -453,6 +459,7 @@
 
   .complaint {
     margin-left: auto;
+    margin-bottom: 10px;
   }
 
   .complaint-btn {
@@ -538,6 +545,15 @@
     width: 100%;
     height: 600px;
 
+  }
+
+  .chat-container{
+    display: none;
+  }
+
+  .hidden-active{
+    display: flex;
+    flex-direction: column;
   }
 
   .chat-title {

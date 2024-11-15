@@ -72,6 +72,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 99;
 }
 
 .quiz-modal-content{
@@ -140,4 +141,98 @@
     line-height: 29px;
     color: #64748B;
     text-align: center;
+}
+
+
+@media only screen and (max-width: 550px) {
+   
+    .quiz{
+        position: relative;
+        padding-bottom: 30px;
+    }
+
+    .quiz-complaint{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+    
+    .write-quiz-block{
+        width: 100%;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    
+    .written-quiz{
+        width: 100%;
+        background-color: inherit;
+        padding-top: 0;
+    }
+
+    .quiz-book{
+        font-size: 16px;
+    }
+    
+    .quiz-info{
+        font-size: 14px;
+        line-height: 19px;
+    }
+    
+    .quiz-chat{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    
+    .score-number{
+        width: 100%;
+        font-size: 16px;
+    }
+    
+    .quiz-modal-content{
+        width: 330px;
+    }
+    
+    .quiz-messeg{
+        font-size: 16px;
+        line-height: 15px;
+        padding: 15px;
+    }
+    
+    .quiz-modal-score{
+        font-weight: 500;
+        font-size: 14px;
+        margin: 0;
+        padding: 5px;
+    }
+    
+    .success-img{
+        width: 66px;
+    }
+
+    .quiz-modal-btn{
+        width: 170px;
+        padding: 8px;
+        font-size: 12px;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+    
+    .modal-back{
+        width: 170px;
+        padding: 8px;
+        font-size: 12px;
+        border-radius: 5px;
+        /* margin-top: 20px; */
+    }
+    
+    .modal-back:hover{
+        box-shadow: 0 0 5px #FF7373;
+    }
+    
+    .quiz-modal-reply{
+        font-size: 14px;
+    }
+    
 }

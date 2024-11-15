@@ -67,7 +67,7 @@ const Quiz = () => {
                         <div className="write-block write-quiz-block">
                             <div className="written-quiz">
                                 <div>
-                                    <h2 className="course-name">Mavzu: Audit</h2>
+                                    <h2 className="course-name quiz-book">Mavzu: Audit</h2>
                                     <p className="quiz-info">O'qituvchi: Azizov Aziz</p>
                                     <p className="quiz-info">O'O'tish bali: 92</p>
                                     <p className="quiz-info">Ajratilgan vaqt: 30 min</p>
@@ -121,7 +121,7 @@ const Quiz = () => {
                                 <h2 className="course-name">O’tishingiz kerak bo’lgan oraliq nazorat test:</h2>
                             </div>
                             <div className="complaint">
-                                <button className="complaint-btn">
+                                <button className="complaint-btn quiz-complaint">
                                     <span className="attention">!</span>
                                     Shikoyat qilish
                                 </button>
