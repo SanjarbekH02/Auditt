@@ -154,7 +154,9 @@ const Lessons = () => {
                                 <div className="written-material">
                                     <div>
                                         <h2 className="course-name material-title">Darsga oid yozma materiallar:</h2>
-                                        <p className="materials">{textContent}</p>
+                                        <div className='materials-box'>
+                                            <p className="materials">{textContent}</p>
+                                        </div>
                                     </div>
                                     {/* <div className="downlaod">
                                         <span className='downlaod-text'>Fayl yuklab olish</span>
