@@ -8,21 +8,20 @@ import Courses from './Pages/Courses/Courses'
 import ListCourses from './Pages/ListCourses/ListCourses';
 import ScrollToTop from './Components/ScrollTop/ScrollTop';
 import Quiz from './Pages/Quiz/Quiz';
-import Sertificate from './Pages/Certificate/Certificate';
+import Certificate from './Pages/Certificate/Certificate';
 import QuizModal from './Components/QuizModal/QuizModal';
 
 function App() {
   return (
     <div className="App">
       <Background />
-      <QuizModal/>
        <Navbar />
        <ScrollToTop />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/courses' element={<ListCourses />} />
         <Route path='/courses/:id' element={<Courses />} />
-        <Route path='/certificate' element={<Sertificate />} />
+        <Route path='/certificate' element={<Certificate />} />
         <Route path='/quiz' element={<Quiz />} />
       </Routes>
       <Footer />

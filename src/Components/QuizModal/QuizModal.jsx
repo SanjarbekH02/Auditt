@@ -1,24 +1,3 @@
-// import React from 'react';
-// import SuccesImg from '../../images/success-quiz.png'
-// import UpsetImg from '../../images/upset.png'
-
-// const QuizModal = () => {
-//     return (
-//         <div className='quiz-modal'>
-//             <div className="quiz-modal-content">
-//                 <h2 className="quiz-messeg">Siz testdan o'tdingiz</h2>
-//                 <p className="quiz-modal-score">To'plagan balingiz: 95</p>
-//                 <img src={SuccesImg} alt="Success" />
-//                 <button className="quiz-modal-btn">BOSH SAHIFA</button>
-//                 <button className="modal-back">ORTGA</button>
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default QuizModal;
-
-
 import React from 'react';
 import SuccesImg from '../../images/success-quiz.png';
 import UpsetImg from '../../images/upset.png';
